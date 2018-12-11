@@ -4,7 +4,14 @@ let year = 21,
     newYear,
     priceWine = 300.3
     totalWine = priceWine * 3
-    totalWineClient = priceWine * 100 * 3 / 100
+    totalWineClient = priceWine * 100 * 3 / 100,
+    totalWineMathClient = Math.round(priceWine * 100 * 3) / 100,
+    totalWineStr = totalWineMathClient.toFixed(2)
+    totalWineNumber = parseFloat(totalWineStr)
+
+let pizzaParts = 8,
+    person = 2,
+    pizzaPerPerson = pizzaParts / person
 
 
 // Add Years year = year + 1
