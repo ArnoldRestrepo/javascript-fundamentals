@@ -9,6 +9,8 @@ const arnold = {
     drone: false
 }
 
+const ADULT_YEAR = 18
+
 /**
  * @name profession
  * @param Object
@@ -32,8 +34,17 @@ const profession = (name) => {
  * @description is adult
  */
 
-const isAdult = ({name, year}) => console.log(`${name} es: ${year >= 18 ? 'mayor' : 'menor'} de edad`)
+const isAdult = ({ name, year }, adultYear) => console.log(`${name} es: ${year >= adultYear ? 'mayor' : 'menor'} de edad`)
+
+/**
+ * @name allowAccess
+ * @param Object
+ * @description Validate if user is adult for allow access
+ */
+
+const allowAccess = ({ name, year }, adultYear) => console.log(`${!isAdult({name, year}, adultYear) ? 'Acceso Permitido' : 'Acceso Denegado'} `) 
 
 
 profession(arnold)
-isAdult(arnold)
+isAdult(arnold, ADULT_YEAR)
+allowAccess(arnold, ADULT_YEAR)
