@@ -7,34 +7,35 @@ const arnold = {
 }
 
 const WEIGHT_STATUS = false
-const WEIGHT_VALUE = 0.200
+const WEIGHT_VALUE = 0.2
 
 
 console.log(`Al inicio del año ${arnold.name} pesa ${arnold.weight} kg`)
 
 /**
- * @name changeWeight
+ * @name increaseWeight
  * @param Object
- * @description Increase or decrease weight
+ * @description Increase weight
  */
 
-const changeWeight = (person, valueWeight) => {
-    if(!valueWeight){
-        person.weight += WEIGHT_VALUE
-    } else {
-        person.weight -= WEIGHT_VALUE
-    }
-}
+const increaseWeight = (person) => person.weight += WEIGHT_VALUE
+
+/**
+ * @name decreaseWeight
+ * @param Object
+ * @description Decrease weight
+ */
+
+const decreaseWeight = (person) => person.weight -= WEIGHT_VALUE
 
 for (let i = 1; i <= 365; i++) {
     let random = Math.random()
 
     if (random < 0.25) {
-        changeWeight()
-    } else if(random > 0.25){
-        changeWeight()
+        increaseWeight(arnold)
+    } else if(random < 0.5){
+        decreaseWeight(arnold)
     }
 }
 
-console.log(`Al final del año ${arnold.name} pesa ${arnold.weight} kg`)
-
+console.log(`Al final del año ${arnold.name} pesa ${arnold.weight.toFixed(1)} kg`)
