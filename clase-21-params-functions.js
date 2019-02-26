@@ -7,16 +7,18 @@ class Person {
         this.tall = tall
     }
 
-    hello(){
+    hello(fn){
         console.log(`Hello ${this.name}`)
+        var {name, lastName} = this
+        if(fn){
+          fn(name, lastName, true)  
+        }
     }
 
     isTall(){
         this.tall < 1.8 ? console.log(`Eres una persona alta`) : console.log(`Eres una persona bajita`)
     }
 }
-
-const user1 = new Person('Arnold')
 
 class Developer extends Person{
     constructor (name, lastName, tall) {
@@ -28,5 +30,19 @@ class Developer extends Person{
     }
 }
 
+function responseHello(name, lastName, isDeveloper){
+    console.log(`Buen Día ${name} ${lastName}`)
+    if (isDeveloper) {
+        console.log(`Ah, Mira, no sabías que eres desarrollador/a`)
+    }
+}
 
+var sacha = new Person('Sacha', 'Lyfszyc', 1.72)
+var arnold = new Person('Arnold', 'Restrepo', 1.65)
+var arturo = new Person('Arturo', 'Martinez', 1.80)
+var erika = new Developer('Erika', 'Luna', 1.85)
 
+sacha.hello(responseHello)
+arnold.hello()
+arturo.hello()
+erika.hello()
