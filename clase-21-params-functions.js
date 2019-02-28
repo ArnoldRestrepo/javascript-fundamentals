@@ -30,6 +30,16 @@ class Developer extends Person{
     }
 }
 
+class Attorney extends Person{
+    constructor (name, lastName, tall) {
+        super(name, lastName, tall)
+    }
+
+    hello(){
+        console.log(`Hola, me llamo ${this.name} ${this.lastName} y soy abogado (a)`)
+    }
+}
+
 function responseHello(name, lastName, isDeveloper){
     console.log(`Buen Día ${name} ${lastName}`)
     if (isDeveloper) {
@@ -42,7 +52,10 @@ var arnold = new Person('Arnold', 'Restrepo', 1.65)
 var arturo = new Person('Arturo', 'Martinez', 1.80)
 var erika = new Developer('Erika', 'Luna', 1.85)
 
+var sacos = new Attorney('Sacos', 'Saquitos', 1.67)
+
 sacha.hello(responseHello)
 arnold.hello()
 arturo.hello()
 erika.hello()
+sacos.hello()
