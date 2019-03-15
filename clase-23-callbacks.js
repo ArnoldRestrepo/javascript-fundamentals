@@ -3,6 +3,13 @@ const PEOPLE_URL = 'people/:id'
 const PLANET_URL = 'planet/:id'
 const OPTIONS_URL = { crossDomain: true }
 
-const LukeUrl = `${API_URL}${PEOPLE_URL.replace(':id', 1)}`
+const onPeopleResponse = (luke) => { console.log(`Hola, yo soy, ${luke.name}`) }
 
-$.get(LukeUrl, OPTIONS_URL, function (luke) { console.log(luke.name) })
+const getActor = (id) => {
+    const URL = `${API_URL}${PEOPLE_URL.replace(':id', id)}`
+    $.get(URL, OPTIONS_URL, onPeopleResponse)
+}
+
+getActor(1);
+getActor(7);
+getActor(5);
