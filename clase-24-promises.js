@@ -16,6 +16,6 @@ const getActor = (id) => {
 
 getActor(1, () => {
     getActor(7, () => {
-        getActor(5);
-    });
-});
+        getActor(5)
+    })
+})
