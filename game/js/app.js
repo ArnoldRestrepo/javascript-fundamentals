@@ -18,7 +18,7 @@ class Juego {
 	// Inicializar Juego
 	inicializar() {
 		btnEmpezar.classList.add('hide')
-		this.nivel = 7
+		this.nivel = 1
 		this.colores = {
 			celeste,
 			violeta,
@@ -51,6 +51,7 @@ class Juego {
 	iluminarSecuencia(){
 		for(let i = 0; i < this.nivel; i++){
 			const color = this.transformarNumeroColor(this.secuencia[i])
+			console.log(color)
 			setTimeout(() => this.iluminarColor(color), 1000 * i)
 		}
 	}
