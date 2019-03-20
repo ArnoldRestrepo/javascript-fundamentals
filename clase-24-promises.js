@@ -3,19 +3,32 @@ const PEOPLE_URL = 'people/:id'
 const PLANET_URL = 'planet/:id'
 const OPTIONS_URL = { crossDomain: true }
 
+const OnError = (id) => console.log(`Sucedío un error al obtener el personaje ${id}`)
 
 const getActor = (id) => {
-    const URL = `${API_URL}${PEOPLE_URL.replace(':id', id)}`
-    
-    $.get(URL, OPTIONS_URL, (opts) => { 
-        console.log(`Hola, yo soy, ${opts.name}`)
-
-        if(callback){ callback() }
-    })
+		const personaje =  new Promise((resolve, reject) => {
+			const URL = `${API_URL}${PEOPLE_URL.replace(':id', id)}`;
+			$
+				.get(URL, OPTIONS_URL, (data) => {
+					resolve(data);
+					console.log(`Hola, yo soy, ${data.name}`);
+				})
+				.fail(() => reject(id));
+		});
 }
 
-getActor(1, () => {
-    getActor(7, () => {
-        getActor(5)
-    })
-})
+const getPerson = async () => {
+	let ids = [1,2,3,4,5,6,7]
+	var promesas = ids.map(id => getActor(id))
+	try {
+		var personajes = await Promise.all(promesas)
+		console.log(personajes)
+	} catch (id) {
+		OnError(id)
+	}
+}
+
+getPerson()
+
+
+	
