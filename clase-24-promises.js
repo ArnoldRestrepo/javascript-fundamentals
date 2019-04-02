@@ -30,5 +30,16 @@ const getPerson = async () => {
 
 getPerson()
 
+// Las promesas se invocan de la siguiente forma:
+new Promise( ( resolve, reject ) => {
+	// --- llamado asíncrono
+	if( todoOK ) {
+		// -- se ejecutó el llamado exitosamente
+		resolve()
+	} else {
+		// -- hubo un error en el llamado
+		reject()
+	}
+})
 
 	
